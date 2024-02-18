@@ -1,38 +1,77 @@
-import { useState } from 'react';
-import { Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { FlashList, ListRenderItem } from '@shopify/flash-list';
+import { useCallback } from 'react';
+import { View } from 'react-native';
 
-import { client } from '~/lib/trpc';
+import { Card } from '~/components/atom';
+import { JobCard } from '~/components/organisms/JobCard';
+import { JobList } from '~/types/jobs';
 
-export default function TabOneScreen() {
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
+const TEST_DATA: JobList[] = [
+  {
+    id: '1',
+    title: 'Looking for RN Developer',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    expand: false,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    salary: 'PHP 100,000',
+    isOpen: true,
+    skills: [
+      'React Native',
+      'Expo',
+      'Typescript',
+      'Software Development',
+      'Mobile Development',
+      'Android',
+      'iOS',
+    ],
+    location: 'Remote',
+    client: '',
+  },
+  {
+    id: '2',
+    title: 'Senior Software Enginner',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    expand: false,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    salary: 'PHP 150,000 - PHP 300,000',
+    isOpen: true,
+    skills: ['React', 'Node', 'Agile Development', 'Software Development'],
+    location: 'Davao City',
+    client: '',
+  },
+];
 
-  const onSubmit = async () => {
-    await client.job.create.mutate({
-      title,
-      description,
-    });
-    setDescription('');
-    setTitle('');
-  };
+export default function Jobs() {
+  const renderJobList: ListRenderItem<JobList> = useCallback(({ item, index }) => {
+    return (
+      <Card>
+        <JobCard
+          index={index}
+          title={item.title}
+          posted="Posted 1 hour ago"
+          salary={item.salary}
+          location={item.location}
+          description={item.description}
+          skills={item.skills}
+        />
+      </Card>
+    );
+  }, []);
 
   return (
-    <View className="items-center flex-1 justify-center gap-4">
-      <TextInput
-        value={title}
-        onChangeText={setTitle}
-        placeholder="Jot title"
-        className="py-4 px-2 border rounded-lg w-96"
+    <View className="flex-1 p-4">
+      <FlashList
+        data={TEST_DATA}
+        showsVerticalScrollIndicator={false}
+        keyExtractor={(data) => data.id}
+        renderItem={renderJobList}
+        estimatedItemSize={50}
+        ItemSeparatorComponent={() => <View className="my-2" />}
       />
-      <TextInput
-        value={description}
-        onChangeText={setDescription}
-        placeholder="Jot Description"
-        className="py-4 px-2 border rounded-lg w-96"
-      />
-      <TouchableOpacity onPress={onSubmit} className="bg-slate-500 px-2 py-4 rounded-lg mt-5">
-        <Text className="text-white min-w-96 text-center">Add Job</Text>
-      </TouchableOpacity>
     </View>
   );
 }
