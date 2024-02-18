@@ -10,8 +10,31 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model User {
+  id        String @id @default(uuid())
+  firstName String
+  lastName  String
+  company   String
+  jobs      Job[]
+}
+
 model Job {
-  id          String @id @default(uuid())
+  id          String   @id @default(uuid())
   title       String
   description String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  salary      String?
+  isOpen      Boolean  @default(true)
+  skills      Skills[]
+  location    String
+  client      User     @relation(fields: [clientId], references: [id])
+  clientId    String
+}
+
+model Skills {
+  id    String @id @default(uuid())
+  name  String
+  job   Job    @relation(fields: [jobId], references: [id])
+  jobId String
 }
