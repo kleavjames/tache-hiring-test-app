@@ -62,6 +62,8 @@ export default function Jobs() {
     );
   }, []);
 
+  const SeparatorComponent = () => <View className="my-2" />;
+
   return (
     <View className="flex-1 p-4">
       <FlashList
@@ -70,7 +72,7 @@ export default function Jobs() {
         keyExtractor={(data) => data.id}
         renderItem={renderJobList}
         estimatedItemSize={50}
-        ItemSeparatorComponent={() => <View className="my-2" />}
+        ItemSeparatorComponent={SeparatorComponent}
       />
     </View>
   );
