@@ -1,10 +1,12 @@
 import { FC } from 'react';
-import { View } from 'react-native';
+import { View, ViewProps } from 'react-native';
 
-type CardProps = {
-  children: React.ReactNode;
+export const Card: FC<ViewProps> = ({ children, className, ...restProps }) => {
+  return (
+    <View className={`${defaultStyles} ${className}`} {...restProps}>
+      {children}
+    </View>
+  );
 };
 
-export const Card: FC<CardProps> = ({ children }) => {
-  return <View className="bg-white rounded-lg p-4">{children}</View>;
-};
+const defaultStyles = 'bg-white rounded-lg p-4';
