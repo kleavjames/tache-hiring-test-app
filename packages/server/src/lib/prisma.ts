@@ -1,4 +1,5 @@
 import { PrismaClient } from "@prisma/client";
+import seed from "../../data/seeder";
 
 const globalForPrisma = globalThis as unknown as { prisma: PrismaClient };
 
@@ -9,6 +10,7 @@ if (process.env.NODE_ENV !== "production") globalForPrisma.prisma = prisma;
 async function connectDB() {
   try {
     await prisma.$connect();
+    // await seed();
     console.log("🖥️  Database connected successfully");
   } catch (error) {
     console.log(error);

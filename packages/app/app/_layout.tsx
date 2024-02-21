@@ -2,6 +2,7 @@ import { ClerkProvider } from '@clerk/clerk-expo';
 import Constants from 'expo-constants';
 import { Slot } from 'expo-router';
 import * as SecureStore from 'expo-secure-store';
+import { RecoilRoot } from 'recoil';
 
 import '../global.css';
 
@@ -42,7 +43,9 @@ export default function RootLayout() {
     <ClerkProvider
       publishableKey={Constants.expoConfig?.extra?.clerkPublishableKey}
       tokenCache={tokenCache}>
-      <Slot />
+      <RecoilRoot>
+        <Slot />
+      </RecoilRoot>
     </ClerkProvider>
   );
 }

@@ -2,16 +2,10 @@ export interface Job {
   id: string;
   title: string;
   description: string;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: Date | string;
+  updatedAt: Date | string;
   salary?: string;
   isOpen: boolean;
-  skills: any[]; // TODO:
+  skills: { id: string; name: string }[];
   location: string;
-  client?: any; // TODO:
-  clientId?: string; // TODO:
-}
-
-export interface JobList extends Job {
-  expand: boolean;
 }

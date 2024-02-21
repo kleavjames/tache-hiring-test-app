@@ -22,20 +22,18 @@ model User {
 model Job {
   id          String   @id @default(uuid())
   title       String
-  description String
+  description String   @db.LongText
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   salary      String?
   isOpen      Boolean  @default(true)
   skills      Skills[]
   location    String
-  client      User     @relation(fields: [clientId], references: [id])
-  clientId    String
+  candidates  User[]
 }
 
 model Skills {
-  id    String @id @default(uuid())
-  name  String
-  job   Job    @relation(fields: [jobId], references: [id])
-  jobId String
+  id   String @id @default(uuid())
+  name String
+  jobs Job[]
 }
