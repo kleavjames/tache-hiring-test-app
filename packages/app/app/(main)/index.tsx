@@ -1,8 +1,9 @@
+import { useAuth } from '@clerk/clerk-expo';
 import { FlashList, ListRenderItem } from '@shopify/flash-list';
 import { useCallback } from 'react';
 import { View } from 'react-native';
 
-import { Card } from '~/components/atom';
+import { Button, Card } from '~/components/atom';
 import { JobCard } from '~/components/organisms/JobCard';
 import { JobList } from '~/types/jobs';
 
@@ -46,6 +47,8 @@ const TEST_DATA: JobList[] = [
 ];
 
 export default function Jobs() {
+  const { signOut } = useAuth();
+
   const renderJobList: ListRenderItem<JobList> = useCallback(({ item, index }) => {
     return (
       <Card>
@@ -66,6 +69,9 @@ export default function Jobs() {
 
   return (
     <View className="flex-1 p-4">
+      <View>
+        <Button title="logout" onPress={() => signOut()} />
+      </View>
       <FlashList
         data={TEST_DATA}
         showsVerticalScrollIndicator={false}

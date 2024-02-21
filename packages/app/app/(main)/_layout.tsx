@@ -1,5 +1,7 @@
+import { useAuth } from '@clerk/clerk-expo';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { Link, Tabs } from 'expo-router';
+import { Link, Tabs, useRouter } from 'expo-router';
+import { useEffect } from 'react';
 import { Pressable, StyleSheet } from 'react-native';
 
 function TabBarIcon(props: {
@@ -9,7 +11,16 @@ function TabBarIcon(props: {
   return <FontAwesome size={28} style={styles.tabBarIcon} {...props} />;
 }
 
-export default function TabLayout() {
+export default function MainLayout() {
+  const router = useRouter();
+  const { isSignedIn, isLoaded } = useAuth();
+
+  useEffect(() => {
+    if (!isSignedIn && isLoaded) {
+      router.replace('/signin');
+    }
+  }, [isSignedIn]);
+
   return (
     <Tabs
       screenOptions={{
