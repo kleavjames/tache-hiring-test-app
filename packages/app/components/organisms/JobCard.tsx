@@ -6,6 +6,7 @@ import { Pressable, Text, View } from 'react-native';
 import { Tag } from '../atom';
 
 import { Job } from '~/types/jobs';
+import { relativeDate } from '~/utils/dates';
 
 type JobCardProps = Job & {
   index: number;
@@ -37,7 +38,7 @@ export const JobCard: FC<JobCardProps> = ({
         <Link href={`/(main)/(jobs)/${id}`}>
           <View className="gap-4">
             <View>
-              <Text className="text-gray-500 text-xs mb-1">{updatedAt?.toString()}</Text>
+              <Text className="text-gray-500 text-xs mb-1">{relativeDate(updatedAt)}</Text>
               <Text className="text-2xl font-medium text-purple-600">{title}</Text>
             </View>
             <View className="self-start gap-2">
