@@ -1,6 +1,5 @@
 import { useAuth } from '@clerk/clerk-expo';
 import { FlashList, ListRenderItem } from '@shopify/flash-list';
-import { Link } from 'expo-router';
 import { useCallback } from 'react';
 import { View } from 'react-native';
 import { useRecoilValue } from 'recoil';
