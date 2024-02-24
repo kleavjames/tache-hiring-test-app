@@ -62,8 +62,8 @@ export const JobCard: FC<JobCardProps> = ({
           </Pressable>
         </Text>
         <View className="flex-row gap-2 flex-wrap">
-          {skills.map((skill, i) => (
-            <Tag key={skill.id} label={skill.name} />
+          {skills.map((skill) => (
+            <Tag key={skill.skillId} id={skill.skillId} />
           ))}
         </View>
       </View>

@@ -1,7 +1,8 @@
 import { Feather } from '@expo/vector-icons';
 import { FlashList, ListRenderItem } from '@shopify/flash-list';
 import { Image } from 'expo-image';
-import { Fragment, useCallback } from 'react';
+import { Link } from 'expo-router';
+import { Fragment } from 'react';
 import { View } from 'react-native';
 import { useRecoilValue } from 'recoil';
 
@@ -17,8 +18,8 @@ export default function TabTwoScreen() {
   // get all candidates
   const candidates = useRecoilValue(usersQuery);
 
-  const renderCandidateItems: ListRenderItem<Candidate> = useCallback(
-    ({ item }) => (
+  const renderCandidateItems: ListRenderItem<Candidate> = ({ item }) => (
+    <Link href={`/(main)/(candidates)/${item.id}`}>
       <Card>
         <View className="flex flex-row">
           <View className="self-center mr-2">
@@ -49,20 +50,13 @@ export default function TabTwoScreen() {
           </View>
         </View>
 
-        <View>
-          <View className="mt-3">
-            <View className="flex flex-row gap-1.5 flex-wrap">
-              {item.skills.map((skill) => (
-                <Fragment key={skill.id}>
-                  <Tag size="small" label={skill.name} />
-                </Fragment>
-              ))}
-            </View>
-          </View>
+        <View className="flex-row gap-1.5 flex-wrap">
+          {item.skills.map((skill) => (
+            <Tag size="small" key={skill.skillId} id={skill.skillId} />
+          ))}
         </View>
       </Card>
-    ),
-    []
+    </Link>
   );
 
   const SeparatorComponent = () => <View className="my-2" />;

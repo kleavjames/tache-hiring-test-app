@@ -1,4 +1,4 @@
-import { selector } from 'recoil';
+import { selector, selectorFamily } from 'recoil';
 
 import { client } from '~/lib/trpc';
 
@@ -11,6 +11,18 @@ export const usersQuery = selector({
     } catch (err) {
       console.error(err);
       return [];
+    }
+  },
+});
+
+export const currentCandidateQuery = selectorFamily({
+  key: 'currentCandidate',
+  get: (userId: string) => async () => {
+    try {
+      const candidate = await client.candidates.getCandidateById.query({ userId });
+      return candidate;
+    } catch (error) {
+      console.error(error);
     }
   },
 });

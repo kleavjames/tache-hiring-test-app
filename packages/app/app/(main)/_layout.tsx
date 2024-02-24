@@ -11,7 +11,11 @@ export default function MainLayout() {
     if (!isSignedIn && isLoaded) {
       router.replace('/signin');
     }
-  }, [isSignedIn]);
+  }, [isSignedIn, isLoaded]);
+
+  if (!isLoaded) {
+    return null;
+  }
 
   return (
     <Tabs
@@ -27,8 +31,9 @@ export default function MainLayout() {
         }}
       />
       <Tabs.Screen
-        name="candidates"
+        name="(candidates)"
         options={{
+          headerShown: false,
           title: 'Candidates',
           tabBarIcon: ({ color }) => <Ionicons name="people-outline" size={24} color={color} />,
         }}

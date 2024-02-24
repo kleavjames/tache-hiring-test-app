@@ -8,8 +8,6 @@ export default function Profile() {
   const { isLoaded: authLoaded, signOut } = useAuth();
   const { user, isLoaded: userLoaded } = useUser();
 
-  console.log(user);
-
   const logout = () => {
     signOut();
   };

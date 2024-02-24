@@ -5,12 +5,12 @@
     "location": "Remote",
     "salary": 100000,
     "skills": [
-      "React",
-      "React Native",
-      "Mobile Development",
-      "Typescript",
-      "iOS",
-      "Android"
+      { "name": "React" },
+      { "name": "React Native" },
+      { "name": "Mobile Development" },
+      { "name": "Typescript" },
+      { "name": "iOS" },
+      { "name": "Android" }
     ]
   },
   {
@@ -19,13 +19,13 @@
     "location": "Cebu City, Philippines, Remote",
     "salary": 150000,
     "skills": [
-      "React",
-      "Software Development",
-      "Node.js",
-      "Agile Development",
-      "Typescript",
-      "API Integration",
-      "Python"
+      { "name": "React" },
+      { "name": "Software Development" },
+      { "name": "Node.js" },
+      { "name": "Agile Development" },
+      { "name": "Typescript" },
+      { "name": "API Integration" },
+      { "name": "Python" }
     ]
   },
   {
@@ -34,13 +34,13 @@
     "location": "United States, Remote",
     "salary": 130000,
     "skills": [
-      "Angular",
-      "HTML/CSS",
-      "MySQL",
-      "MongoDB",
-      "Typescript",
-      "React",
-      "Python"
+      { "name": "Angular" },
+      { "name": "HTML/CSS" },
+      { "name": "MySQL" },
+      { "name": "MongoDB" },
+      { "name": "Typescript" },
+      { "name": "React" },
+      { "name": "Python" }
     ]
   },
   {
@@ -49,13 +49,13 @@
     "location": "Philippines, Remote",
     "salary": 70000,
     "skills": [
-      "Figma",
-      "UI/UX",
-      "HTML/CSS",
-      "Adobe Photoshop",
-      "Web Design",
-      "Web Development",
-      "Javascript"
+      { "name": "Figma" },
+      { "name": "UI/UX" },
+      { "name": "HTML/CSS" },
+      { "name": "Adobe Photoshop" },
+      { "name": "Web Design" },
+      { "name": "Web Development" },
+      { "name": "Javascript" }
     ]
   }
 ]

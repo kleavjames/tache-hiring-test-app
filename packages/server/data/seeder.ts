@@ -3,12 +3,6 @@ import jobsJson from "./jobs.json";
 import usersJson from "./users.json";
 
 async function seed() {
-  // delete all data first then seed
-  console.log("Deleting all test datas");
-  await prisma.job.deleteMany();
-  await prisma.skills.deleteMany();
-  await prisma.user.deleteMany();
-
   // add jobs
   jobsJson.map(async (job) => {
     await prisma.job.create({
@@ -19,7 +13,11 @@ async function seed() {
         salary: job.salary,
         skills: {
           create: job.skills.map((skill) => ({
-            name: skill,
+            skill: {
+              create: {
+                name: skill.name,
+              },
+            },
           })),
         },
       },
@@ -38,7 +36,11 @@ async function seed() {
         position: user.position,
         skills: {
           create: user.skills.map((skill) => ({
-            name: skill,
+            skill: {
+              create: {
+                name: skill.name,
+              },
+            },
           })),
         },
       },

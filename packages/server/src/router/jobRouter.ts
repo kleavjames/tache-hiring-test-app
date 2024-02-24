@@ -1,5 +1,6 @@
 import { prisma } from "../lib/prisma";
 import { publicProcedure, router } from "../lib/trpc";
+import { v4 as uuidv4 } from "uuid";
 import { z } from "zod";
 
 export const jobRouter = router({
@@ -32,7 +33,7 @@ export const jobRouter = router({
       z.object({
         title: z.string(),
         description: z.string(),
-        salary: z.number().nullable(),
+        salary: z.number(),
         skills: z.string().array(),
         location: z.string(),
       })
@@ -46,7 +47,11 @@ export const jobRouter = router({
           location: input.location,
           skills: {
             create: input.skills.map((skill) => ({
-              name: skill,
+              skill: {
+                create: {
+                  name: skill,
+                },
+              },
             })),
           },
         },

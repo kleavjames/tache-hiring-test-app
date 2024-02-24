@@ -3,8 +3,8 @@ export interface Candidate {
   firstName: string;
   lastName: string;
   position: string;
-  askingSalary: number | null;
+  askingSalary: number;
   location: string;
   aboutMe: string;
-  skills: { id: string; name: string }[];
+  skills: { skillId: string; userId: string }[];
 }
