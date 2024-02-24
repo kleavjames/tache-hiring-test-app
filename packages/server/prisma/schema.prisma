@@ -11,30 +11,49 @@ datasource db {
 }
 
 model User {
-  id        String @id @default(uuid())
-  firstName String
-  lastName  String
-  company   String
-  jobs      Job[]
+  id           String       @id @default(uuid())
+  firstName    String
+  lastName     String
+  position     String
+  askingSalary Int
+  location     String
+  aboutMe      String       @db.LongText
+  skills       UserSkills[]
 }
 
 model Job {
-  id          String   @id @default(uuid())
+  id          String      @id @default(uuid())
   title       String
-  description String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  salary      String?
-  isOpen      Boolean  @default(true)
-  skills      Skills[]
+  description String      @db.LongText
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  salary      Int
+  isOpen      Boolean     @default(true)
+  skills      JobSkills[]
   location    String
-  client      User     @relation(fields: [clientId], references: [id])
-  clientId    String
 }
 
 model Skills {
-  id    String @id @default(uuid())
+  id    String       @id @default(uuid())
   name  String
-  job   Job    @relation(fields: [jobId], references: [id])
-  jobId String
+  jobs  JobSkills[]
+  users UserSkills[]
+}
+
+model JobSkills {
+  job     Job    @relation(fields: [jobId], references: [id])
+  jobId   String
+  skill   Skills @relation(fields: [skillId], references: [id])
+  skillId String
+
+  @@id([jobId, skillId])
+}
+
+model UserSkills {
+  user    User   @relation(fields: [userId], references: [id])
+  userId  String
+  skill   Skills @relation(fields: [skillId], references: [id])
+  skillId String
+
+  @@id([userId, skillId])
 }
