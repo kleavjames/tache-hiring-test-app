@@ -2,7 +2,6 @@ import { useAuth } from '@clerk/clerk-expo';
 import { Ionicons } from '@expo/vector-icons';
 import { Tabs, useRouter } from 'expo-router';
 import { useEffect } from 'react';
-import { StyleSheet } from 'react-native';
 
 export default function MainLayout() {
   const router = useRouter();
@@ -28,14 +27,14 @@ export default function MainLayout() {
         }}
       />
       <Tabs.Screen
-        name="two"
+        name="candidates"
         options={{
           title: 'Candidates',
           tabBarIcon: ({ color }) => <Ionicons name="people-outline" size={24} color={color} />,
         }}
       />
       <Tabs.Screen
-        name="three"
+        name="profile"
         options={{
           title: 'Profile',
           tabBarIcon: ({ color }) => <Ionicons name="id-card-outline" size={24} color={color} />,
@@ -44,12 +43,3 @@ export default function MainLayout() {
     </Tabs>
   );
 }
-
-const styles = StyleSheet.create({
-  headerRight: {
-    marginRight: 15,
-  },
-  tabBarIcon: {
-    marginBottom: -3,
-  },
-});

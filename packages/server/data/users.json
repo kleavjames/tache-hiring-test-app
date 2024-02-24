@@ -1,0 +1,71 @@
+[
+  {
+    "firstName": "Kleavant James",
+    "lastName": "Olmedo",
+    "position": "Mobile Developer",
+    "location": "Davao City, Philippines 8000",
+    "askingSalary": 130000,
+    "aboutMe": "Ipsum deserunt amet reprehenderit non non nostrud proident dolore laboris. Nostrud ea culpa laborum irure non. Exercitation minim consequat ad cupidatat velit ea veniam labore laborum do quis officia dolore.",
+    "skills": [
+      "React Native",
+      "Typescript",
+      "Kotlin",
+      "Swift",
+      "Node JS",
+      "MongoDB",
+      "Sqlite",
+      "Firebase",
+      "Devops",
+      "Expo SDK",
+      "CI/CD"
+    ]
+  },
+  {
+    "firstName": "John",
+    "lastName": "Doe",
+    "position": "Software Engineer",
+    "location": "Makati City, Philippines",
+    "askingSalary": 150000,
+    "aboutMe": "Sit sit dolore irure deserunt dolore occaecat et. Id magna est id ipsum ipsum voluptate incididunt duis sunt nostrud consectetur officia occaecat ut. Do quis enim ullamco officia exercitation minim sit occaecat. Duis occaecat cupidatat Lorem exercitation voluptate irure do duis magna occaecat do sint irure. Incididunt ad incididunt sint Lorem ad aute. Ipsum non elit ullamco dolor adipisicing nostrud esse laboris culpa.",
+    "skills": [
+      "React",
+      "Python",
+      "Java",
+      "Spring Boot",
+      "Node JS",
+      "Typescript",
+      "Azure Devops"
+    ]
+  },
+  {
+    "firstName": "Sarah",
+    "lastName": "Herman",
+    "position": "Graphic Designer",
+    "location": "Anywhere in Philippines",
+    "askingSalary": 85000,
+    "aboutMe": "Occaecat excepteur veniam magna excepteur consequat esse nulla deserunt irure magna adipisicing minim minim duis. Incididunt anim laboris dolor dolor tempor. Pariatur id proident aliquip quis sit officia do deserunt.",
+    "skills": [
+      "Adobe Photoshop",
+      "Adobe Illustrator",
+      "Figma",
+      "Web Design"
+    ]
+  },
+  {
+    "firstName": "Kieth",
+    "lastName": "Job",
+    "position": "React Native Engineer",
+    "location": "Anywhere in Philippines",
+    "askingSalary": 170000,
+    "aboutMe": "Id cupidatat duis nisi reprehenderit ad nulla amet excepteur. Laborum proident id sint laborum cupidatat officia nisi sint velit mollit cupidatat Lorem anim. Dolor excepteur tempor fugiat duis laborum deserunt. Proident laborum occaecat pariatur id minim proident ex commodo laboris quis elit Lorem culpa quis. Sit irure excepteur commodo consectetur cillum velit sunt do fugiat exercitation consequat veniam non ex.",
+    "skills": [
+      "React",
+      "React Native",
+      "Expo SDK",
+      "Swift",
+      "Android",
+      "Cloud Computing",
+      "Devops"
+    ]
+  }
+]

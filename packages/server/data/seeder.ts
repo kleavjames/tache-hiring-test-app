@@ -1,5 +1,6 @@
 import { prisma } from "../src/lib/prisma";
 import jobsJson from "./jobs.json";
+import usersJson from "./users.json";
 
 async function seed() {
   // delete all data first then seed
@@ -24,6 +25,26 @@ async function seed() {
       },
     });
   });
+
+  // add users
+  usersJson.map(async (user) => {
+    await prisma.user.create({
+      data: {
+        firstName: user.firstName,
+        lastName: user.lastName,
+        aboutMe: user.aboutMe,
+        location: user.location,
+        askingSalary: user.askingSalary,
+        position: user.position,
+        skills: {
+          create: user.skills.map((skill) => ({
+            name: skill,
+          })),
+        },
+      },
+    });
+  });
+
   console.log("Succesfully seeded data");
 }
 

@@ -3,11 +3,11 @@ import { Text, View } from 'react-native';
 
 type TagProps = {
   label: string;
-  size?: 'default' | 'large';
+  size?: 'default' | 'large' | 'small';
 };
 
 export const Tag: FC<TagProps> = ({ label, size = 'default' }) => {
-  const textClassname = size === 'default' ? 'text-sm' : 'text-xl';
+  const textClassname = size === 'default' ? 'text-sm' : size === 'small' ? 'text-xs' : 'text-xl';
 
   return (
     <View className="border border-purple-300 self-start p-1.5 rounded-lg">

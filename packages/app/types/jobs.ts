@@ -4,7 +4,7 @@ export interface Job {
   description: string;
   createdAt: Date | string;
   updatedAt: Date | string;
-  salary?: string;
+  salary?: number;
   isOpen: boolean;
   skills: { id: string; name: string }[];
   location: string;

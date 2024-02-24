@@ -27,17 +27,29 @@ export const jobRouter = router({
         },
       });
     }),
-  // create: publicProcedure
-  //   .input(z.object({ title: z.string(), description: z.string() }))
-  //   .mutation(({ input }) => {
-  //     const title = input.title;
-  //     const description = input.description;
-
-  //     return prisma.job.create({
-  //       data: {
-  //         title,
-  //         description,
-  //       },
-  //     });
-  //   }),
+  createJob: publicProcedure
+    .input(
+      z.object({
+        title: z.string(),
+        description: z.string(),
+        salary: z.number().nullable(),
+        skills: z.string().array(),
+        location: z.string(),
+      })
+    )
+    .mutation(({ input }) => {
+      return prisma.job.create({
+        data: {
+          title: input.title,
+          description: input.description,
+          salary: input.salary,
+          location: input.location,
+          skills: {
+            create: input.skills.map((skill) => ({
+              name: skill,
+            })),
+          },
+        },
+      });
+    }),
 });

@@ -1,6 +1,6 @@
 import { ClerkProvider } from '@clerk/clerk-expo';
 import Constants from 'expo-constants';
-import { Slot } from 'expo-router';
+import { Stack } from 'expo-router';
 import * as SecureStore from 'expo-secure-store';
 import { RecoilRoot } from 'recoil';
 
@@ -10,15 +10,6 @@ export const unstable_settings = {
   // Ensure that reloading on `/modal` keeps a back button present.
   initialRouteName: '(tabs)',
 };
-
-// export default function RootLayout() {
-//   return (
-//     <Stack>
-//       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-//       <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
-//     </Stack>
-//   );
-// }
 
 const tokenCache = {
   async getToken(key: string) {
@@ -44,7 +35,11 @@ export default function RootLayout() {
       publishableKey={Constants.expoConfig?.extra?.clerkPublishableKey}
       tokenCache={tokenCache}>
       <RecoilRoot>
-        <Slot />
+        <Stack screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="(main)" />
+          <Stack.Screen name="signin" />
+          <Stack.Screen name="createPost" options={{ presentation: 'modal' }} />
+        </Stack>
       </RecoilRoot>
     </ClerkProvider>
   );

@@ -7,6 +7,7 @@ import { Tag } from '../atom';
 
 import { Job } from '~/types/jobs';
 import { relativeDate } from '~/utils/dates';
+import { convertPesoFormat } from '~/lib/number';
 
 type JobCardProps = Job & {
   index: number;
@@ -43,7 +44,9 @@ export const JobCard: FC<JobCardProps> = ({
             </View>
             <View className="self-start gap-2">
               <View className="bg-purple-100 p-1.5 rounded-lg self-start">
-                <Text className="font-bold text-purple-600">{salary}</Text>
+                <Text className="font-bold text-purple-600">
+                  {convertPesoFormat.format(salary!)}
+                </Text>
               </View>
               <View className="flex-row items-center gap-1.5">
                 <Feather name="map-pin" size={14} color="#a4a4a4" />

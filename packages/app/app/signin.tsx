@@ -1,8 +1,8 @@
 import { useSignIn } from '@clerk/clerk-expo';
-import { Link, useRouter } from 'expo-router';
+import { useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { FC, useState } from 'react';
-import { ActivityIndicator, TouchableOpacity, View } from 'react-native';
+import { ActivityIndicator, View } from 'react-native';
 
 import { Button, Card, Input, Text } from '~/components/atom';
 
@@ -30,7 +30,7 @@ const SignIn: FC = () => {
       await setActive({ session: completeSignIn.createdSessionId });
 
       // navigate once success login
-      router.replace('/(main)');
+      router.replace('/(main)/(jobs)');
     } catch (err: any) {
       console.log(err);
     } finally {
@@ -65,16 +65,6 @@ const SignIn: FC = () => {
             onChangeText={setPassword}
           />
           <Button title="Login" className="mt-5" onPress={onSignInPress} />
-          <View>
-            <Text className="text-center mt-3">
-              Don't you have an account?
-              <Link href="/signup" asChild>
-                <TouchableOpacity className="pl-1 pt-1">
-                  <Text className="text-purple-500">Sign Up</Text>
-                </TouchableOpacity>
-              </Link>
-            </Text>
-          </View>
         </Card>
       </View>
     </>
